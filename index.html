@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Freelance Web Developer — Fast, Modern Websites for Your Business</title>
+<meta name="description" content="I design and build fast, modern websites and web apps for businesses and creators. Built with React, Node.js and modern tooling." />
+<meta property="og:title" content="Freelance Web Developer — Modern Websites Built Fast" />
+<meta property="og:description" content="From landing pages to full web apps — clean code, great design, delivered on time." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1116; --surface:#161a21; --surface-2:#1c2129;
+    --fg:#f4f6f8; --muted:#9aa3ad; --border:rgba(255,255,255,.08);
+    --brand:#c6f54d; --brand-fg:#1a2200; --warm:#f0a85c;
+    --radius:12px;
+    --font-display:"Space Grotesk",system-ui,sans-serif;
+    --font-sans:"Inter",system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-sans); color:var(--fg); background:var(--bg);
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+    background-image:
+      radial-gradient(60rem 40rem at 90% -10%, rgba(198,245,77,.10), transparent 60%),
+      radial-gradient(50rem 30rem at -10% 20%, rgba(240,168,92,.08), transparent 60%);
+    background-attachment:fixed;
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-.02em;line-height:1.1}
+  .container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+  .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .75rem;border-radius:999px;
+    border:1px solid var(--border);background:var(--surface);font-family:var(--font-mono);
+    font-size:.75rem;color:var(--muted)}
+  .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--brand)}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.25rem;border-radius:var(--radius);
+    font-weight:600;transition:transform .15s, box-shadow .2s, background .15s;cursor:pointer;border:0;font-size:1rem}
+  .btn-brand{background:var(--brand);color:var(--brand-fg)}
+  .btn-brand:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(198,245,77,.5)}
+  .btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  header.nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);
+    background:rgba(14,17,22,.7);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+  .logo-mark{width:32px;height:32px;border-radius:8px;background:var(--brand);color:var(--brand-fg);
+    display:grid;place-items:center;font-weight:700}
+  nav.links{display:none;gap:2rem;font-size:.9rem;color:var(--muted)}
+  nav.links a:hover{color:var(--fg)}
+  @media(min-width:768px){nav.links{display:flex}}
+  .btn-sm{padding:.55rem 1rem;font-size:.875rem}
+  section{padding:5rem 0;border-top:1px solid var(--border)}
+  section.hero{padding:6rem 0 8rem;border:0}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;max-width:900px}
+  .hero h1 .accent{color:var(--brand)}
+  .hero p.lead{margin-top:1.5rem;font-size:1.15rem;color:var(--muted);max-width:640px}
+  .hero .cta{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.75rem}
+  .stats{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:420px}
+  .stat .num{font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--brand)}
+  .stat .lbl{color:var(--muted);font-size:.9rem}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:700}
+  .sec-head p{color:var(--muted);max-width:380px}
+  .grid-3{display:grid;grid-template-columns:1fr;gap:1.25rem}
+  .grid-4{display:grid;grid-template-columns:1fr;gap:1.25rem}
+  @media(min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color .2s,transform .2s}
+  .card:hover{border-color:var(--brand)}
+  .icon-tile{width:44px;height:44px;border-radius:10px;background:rgba(198,245,77,.15);color:var(--brand);
+    display:grid;place-items:center;margin-bottom:1.25rem;font-size:1.25rem}
+  .card h3{font-size:1.2rem;margin-bottom:.5rem}
+  .card p{color:var(--muted);font-size:.92rem}
+  .stack-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:start}
+  @media(min-width:768px){.stack-grid{grid-template-columns:1fr 1fr}}
+  .stack-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+  .stack-tags .chip{color:var(--fg);padding:.55rem 1rem;font-size:.875rem}
+  .feature-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.85rem}
+  .feature-list li{display:flex;gap:.75rem;color:var(--muted);font-size:.95rem;list-style:none}
+  .feature-list .check{color:var(--brand);flex-shrink:0;margin-top:.2rem}
+  .step-num{font-family:var(--font-mono);color:var(--brand);font-size:.875rem;margin-bottom:.75rem}
+  .contact-card{max-width:760px;margin:0 auto;text-align:center;background:var(--surface-2);
+    padding:3rem 1.5rem;border:1px solid var(--border);border-radius:18px}
+  @media(min-width:768px){.contact-card{padding:4rem 3rem}}
+  .contact-card h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin:1rem 0}
+  .contact-card h2 .accent{color:var(--brand)}
+  .contact-card p{color:var(--muted);max-width:480px;margin:0 auto 2rem}
+  .contact-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+  footer{padding:2.5rem 0;border-top:1px solid var(--border);color:var(--muted);font-size:.875rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  footer .mono{font-family:var(--font-mono);font-size:.75rem}
+</style>
+</head>
+<body>
+
+<!-- 🔧 EDIT the links below: WhatsApp number (intl. format), Instagram handle, email -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">&lt;/&gt;</span> Arnold Katamingu</a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#stack">Tech</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-brand btn-sm">Start a project</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container">
+    <span class="chip"><span class="dot"></span> Available for new projects</span>
+    <h1 style="margin-top:1.5rem">Websites that make your business <span class="accent">look serious</span> online.</h1>
+    <p class="lead">I'm Arnold Katamingu, a freelance web developer. I build fast, modern websites and web apps using React, Node.js and the latest tools — so you stand out, load fast, and win more clients.</p>
+    <div class="cta">
+      <a href="https://wa.me/+263788892929?text=Hi!%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener" class="btn btn-brand">💬 Chat on WhatsApp</a>
+      <a href="#services" class="btn btn-ghost">See what I do →</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">Fast</div><div class="lbl">delivery</div></div>
+      <div class="stat"><div class="num">Modern</div><div class="lbl">stack</div></div>
+      <div class="stat"><div class="num">Honest</div><div class="lbl">pricing</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <span class="chip">Services</span>
+        <h2 style="margin-top:.75rem">What I build for you</h2>
+      </div>
+      <p>Whatever stage your business is at, I can build the right web presence for it.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon-tile">🌐</div>
+        <h3>Business Websites</h3>
+        <p>Landing pages and multi-page sites that load fast, look sharp, and convert visitors into customers.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile">📚</div>
+        <h3>Web Applications</h3>
+        <p>Custom dashboards, booking systems, and tools built with React and Node.js — tailored to your workflow.</p>
+      </div>
+      <div class="card">
+        <div class="icon-tile">🚀</div>
+        <h3>Redesigns & Speed-ups</h3>
+        <p>Modernize an outdated site, fix slow load times, and make your brand finally look the way it should.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="container stack-grid">
+    <div>
+      <span class="chip">Tech I use</span>
+      <h2 style="margin-top:.75rem;font-size:clamp(2rem,4vw,3rem)">Modern tools.<br><span style="color:var(--brand)">Clean code.</span></h2>
+      <p style="color:var(--muted);max-width:420px;margin-top:1rem">I work with proven, well-supported frameworks — so your site stays fast today and is easy to maintain tomorrow.</p>
+      <ul class="feature-list">
+        <li><span class="check">⚡</span> Built for speed — optimized images, code-splitting, edge-ready.</li>
+        <li><span class="check">🛡️</span> Secure by default — best practices baked in.</li>
+        <li><span class="check">✓</span> Responsive and accessible on every device.</li>
+      </ul>
+    </div>
+    <div class="stack-tags">
+      <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+      <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Node.js</span>
+      <span class="chip">Tailwind</span><span class="chip">Next.js</span><span class="chip">Express</span>
+      <span class="chip">MongoDB</span><span class="chip">PostgreSQL</span><span class="chip">Git</span>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="sec-head"><div>
+      <span class="chip">How we work</span>
+      <h2 style="margin-top:.75rem">Simple, transparent process</h2>
+    </div></div>
+    <div class="grid-4">
+      <div class="card"><div class="step-num">01</div><h3>Discovery</h3><p>We talk about your goals, audience, and budget. No jargon.</p></div>
+      <div class="card"><div class="step-num">02</div><h3>Design</h3><p>I share a clean mockup so you see exactly what you're getting.</p></div>
+      <div class="card"><div class="step-num">03</div><h3>Build</h3><p>Clean, fast code. Mobile-first. SEO-ready from day one.</p></div>
+      <div class="card"><div class="step-num">04</div><h3>Launch</h3><p>Deployed, tested, and handed over — plus support if you need it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <span class="chip">Let's talk</span>
+      <h2>Ready to get your website <span class="accent">live?</span></h2>
+      <p>Tell me about your project. I usually reply within a few hours. No pressure, no obligation.</p>
+      <div class="contact-cta">
+        <a href="https://wa.me/+263788892929?text=Hi!%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" rel="noopener" class="btn btn-brand">💬 WhatsApp me</a>
+        <a href="https://instagram.com/qaattin" target="_blank" rel="noopener" class="btn btn-ghost">📷 Instagram</a>
+        <a href="mailto:akatamingu@gmail.com" class="btn btn-ghost">✉ Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="container">
+  <div>© <span id="y"></span> Arnold Katamingu. Crafted with care.</div>
+  <div class="mono">Freelance Web Developer</div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
